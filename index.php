@@ -3,9 +3,13 @@
 
         $text_length = strlen($text);
 
-        $badword = 'dolor';
+        if( isset( $_GET['badword'])) {
+            $text_censored = str_replace($badword, '***', $text);
 
-        $text_censored = str_replace($badword, '***', $text);
+            $badword = $_GET['badword'];
+        } else {
+            $text_censored = $text;
+        }
 ?>
 
 <!DOCTYPE html>
@@ -35,6 +39,12 @@
     <p>
         <?php 
             echo $text_length;
+        ?>
+    </p>
+
+    <p>
+        <?php 
+            echo 'La parola censurata é ' . $badword;
         ?>
     </p>
 
